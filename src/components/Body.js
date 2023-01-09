@@ -33,10 +33,10 @@ const Body = () => {
         })
         console.log(letters)
         if(elt.target.value !== ""){
-            setSearch(letters)
-            
+            setSearch(letters) 
         }
     }
+    const length=Search.length
   return (
 
     <div className='container'>
@@ -44,24 +44,28 @@ const Body = () => {
         <div className='Search'>
             <input type="text" placeholder="Search " onChange={onChangeHandler} />
         </div>
-        <div className='bookList'>
-            {Search.map((book) => {
-                return (
-                        <div className='book'>
-                            <div className='image'>
-                                <img src={book.imageLinks.thumbnail} alt='Book' />
-                            </div>
-                            <div id='title'>
-                                <h3>{book.title}</h3>
-                                <h4>Author: {book.authors}</h4>
-                            </div>
-                            <div className='description'>
-                                <button id='free'>Free</button>
-                            </div>
-                        </div>  
-                )
-            })}
-        </div>
+         {length===0?<h1>"No books are available"</h1>:
+         <div className='bookList'>
+         {Search.map((book) => {
+             return (
+                     <div className='book'>
+                         <div className='image'>
+                             <img src={book.imageLinks.thumbnail} alt='Book' />
+                         </div>
+                         <div id='title'>
+                             <h3>{book.title}</h3>
+                             <h4>Author: {book.authors}</h4>
+                         </div>
+                         <div className='description'>
+                             <button id='free'>Free</button>
+                         </div>
+                     </div>  
+                     
+             )
+         })}
+     </div>
+         }
+        
     </div>
   )
 }
